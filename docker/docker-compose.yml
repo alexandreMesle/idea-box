@@ -23,9 +23,9 @@ services:
        - "traefik.frontend.redirect.entryPoint=https"
 
   db:
-    image: mysql:5.7
+    image: mariadb
     restart: always
-    container_name: ${MYSQL_CONTAINER_NAME}
+    container_name: ${DB_CONTAINER_NAME}
     environment:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USER}
@@ -33,9 +33,9 @@ services:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     networks:
        - traefik_network
-    command: --max_allowed_packet=325058560
+#    command: #--initialize-insecure #--max_allowed_packet=325058560 --innodb_use_native_aio = 0
     volumes:
-      - ./mysql:/var/lib/mysql
+      - ./mysql_data:/var/lib/mysql
     labels:
        - "traefik.enable=false"
 

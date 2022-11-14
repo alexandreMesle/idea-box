@@ -59,6 +59,7 @@ RUN chown -R www-data:www-data /var/www/html
 RUN mkdir -p /var/www/.npm \
     && chown -Rv www-data:www-data /var/www/.npm
 
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install php8.0-curl
 
 WORKDIR /var/www/html
 
