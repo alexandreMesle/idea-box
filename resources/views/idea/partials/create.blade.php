@@ -1,4 +1,4 @@
-<form action="/idea" method="POST">
+<form action="idea" method="POST">
     @csrf
     <label>Email</label>
     <input name="mail">
